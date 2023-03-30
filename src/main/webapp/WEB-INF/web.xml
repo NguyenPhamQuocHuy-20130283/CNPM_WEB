@@ -5,8 +5,7 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <welcome-file-list>
-    <welcome-file>./views/web/index.html</welcome-file>
-    <welcome-file>./views/web/blog.html</welcome-file>
+    <welcome-file>index.html</welcome-file>
   </welcome-file-list>
 
 </web-app>
