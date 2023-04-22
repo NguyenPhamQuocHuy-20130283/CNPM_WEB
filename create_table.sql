@@ -1,4 +1,4 @@
-// thêm bảng logs để ghi lại lịch sử đăng nhập
+-- thêm bảng logs để ghi lại lịch sử đăng nhập
 CREATE TABLE logs (
 id_log BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
 user_id VARCHAR(50) DEFAULT '-1',
