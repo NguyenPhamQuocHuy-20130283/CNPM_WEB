@@ -2,9 +2,9 @@ package tran_minh_tuyen.controller;
 
 import com.restfb.types.User;
 import tran_minh_tuyen.db.JDBiConnector;
-import tran_minh_tuyen.model.Customer;
 import tran_minh_tuyen.model.Log;
 import tran_minh_tuyen.model.TypeAcc;
+import tran_minh_tuyen.model.UserCustomer;
 import tran_minh_tuyen.service.FacebookGoogleService;
 import tran_minh_tuyen.utils.FacebookUtils;
 
@@ -37,42 +37,42 @@ public class FacebookLoginServlet extends HttpServlet {
 
             String webBrowser = request.getHeader("User-Agent");
 
-            Customer customer = new Customer();
-            customer.setId_user_fb(userFacebook.getId());
-            customer.setFullname(userFacebook.getName());
-            customer.setSex(userFacebook.getGender());
-            customer.setEmail_customer(userFacebook.getEmail());
+            UserCustomer userCustomer = new UserCustomer();
+            userCustomer.setId_fb(userFacebook.getId());
+            userCustomer.setName(userFacebook.getName());
+            userCustomer.setSex(userFacebook.getGender());
+            userCustomer.setEmail(userFacebook.getEmail());
 
             // kiểm tra id_user_fb của người dùng có tồn tại trong hệ thống hay chưa ?
             int id_user = FacebookGoogleService.checkExistAccReturnId(JDBiConnector.me(), userFacebook.getId(), TypeAcc.ACC_FACEBOOK);
             if (id_user != -1) {
                 // đã tồn tại trong hệ thống
-                customer.setId(id_user);
-                Log logSignIn = new Log(Log.ALERT, customer.getId() + "", "", "đăng nhập hệ thống bằng tài khoản Fb", "", webBrowser, "");
+                userCustomer.setId(id_user + "");
+                Log logSignIn = new Log(userCustomer.getId(), "", "đăng nhập hệ thống bằng tài khoản Fb", "", webBrowser, "");
                 logSignIn.insert(JDBiConnector.me()); // ghi lịch sử đăng nhập vào bảng Log
 
-                request.getSession().setAttribute("auth_customer", customer);
-                response.sendRedirect(request.getContextPath() + "/shop/home");
+                request.getSession().setAttribute("auth_customer", userCustomer);
+                response.sendRedirect(request.getContextPath() + "/HomeServlet");
 
             } else if (id_user == -1) {
                 // chưa tồn tại trong hệ thống
 
-                Log logCreateAcc = new Log(Log.WARNING,  "", "", "", "", webBrowser, "");
-                int new_id_user = FacebookGoogleService.createAccProReturnId(JDBiConnector.me(), customer, TypeAcc.ACC_FACEBOOK, logCreateAcc);
+                Log logCreateAcc = new Log("", "", "", "", webBrowser, "");
+                int new_id_user = FacebookGoogleService.createAccProReturnId(JDBiConnector.me(), userCustomer, TypeAcc.ACC_FACEBOOK, logCreateAcc);
 
                 if (new_id_user != -1) {
                     // tạo tài khoản thành công đồng thời đăng nhập vào hệ thống
-                    customer.setId(new_id_user);
-                    Log logSignIn = new Log(Log.ALERT, customer.getId() + "", "", "đăng nhập hệ thống bằng tài khoản Fb", "", webBrowser, "");
+                    userCustomer.setId(new_id_user + "");
+                    Log logSignIn = new Log(userCustomer.getId(), "", "đăng nhập hệ thống bằng tài khoản Fb", "", webBrowser, "");
                     logSignIn.insert(JDBiConnector.me());
 
-                    request.getSession().setAttribute("auth_customer", customer);
-                    response.sendRedirect(request.getContextPath() + "/shop/home");
+                    request.getSession().setAttribute("auth_customer", userCustomer);
+                    response.sendRedirect(request.getContextPath() + "/HomeServlet");
 
                 } else {
                     // tạo tài khoản không thành công <=> không thể đăng nhập vào hệ thống
 
-                    response.sendRedirect(request.getContextPath() + "/shop/login");
+                    response.sendRedirect(request.getContextPath() + "/LoginServlet");
 
                 }
 
