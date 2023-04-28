@@ -55,8 +55,8 @@
 <div class="search-model">
     <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="search-close-switch">+</div>
-        <%--feature tìm kiếm sản phẩm
-            B1: Nhập từ khóa tìm kiếm--%>
+<%------------------------------FEATURE TÌM KIẾM SẢN PHẨM
+                                B1: Nhập từ khóa tìm kiếm------------------------------%>
         <form class="search-model-form" action="/SeachController">
             <input name="name" type="text" id="search-input" placeholder="Search here.....">
             <br>
@@ -65,8 +65,8 @@
     </div>
 </div>
 <script>
-    <%--feature tìm kiếm sản phẩm
-        B2: kiểm tra từ khóa trống hay không--%>
+<%------------------------------FEATURE TÌM KIẾM SẢN PHẨM
+                                B2: kiểm tra từ khóa trống hay không------------------------------%>
     var form = document.querySelector("form");
     function chkEmpty(input) {
         input.value = input.value.trim();
