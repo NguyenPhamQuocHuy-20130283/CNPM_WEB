@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Đăng nhập</title>
+    <title>Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -157,17 +157,17 @@
 <section class="container">
     <div class="login-box">
         <div class="lb-header">
-            <a href="#" class="active" id="login-box-link">Đăng nhập</a>
-            <a href="#" id="signup-box-link">Đăng ký</a>
+            <a href="#" class="active" id="login-box-link">Login</a>
+            <a href="#" id="signup-box-link">Register</a>
         </div>
         <div class="social-login">
             <a href="#" onclick="loginFacebook()">
                 <i class="fa-brands fa-facebook"></i>
-                đăng nhập facebook
+                Login with facebook
             </a>
             <a href="#">
                 <i class="fa-brands fa-google"></i>
-                đăng nhập Google
+                Login with Google
             </a>
         </div>
         <form class="email-login">
@@ -175,13 +175,13 @@
                 <input type="email" placeholder="Email"/>
             </div>
             <div class="u-form-group">
-                <input type="password" placeholder="Mật khẩu"/>
+                <input type="password" placeholder="Password"/>
             </div>
             <div class="u-form-group">
-                <button>Đăng nhập</button>
+                <button>Login</button>
             </div>
             <div class="u-form-group">
-                <a href="#" class="forgot-password">Quên mật khẩu?</a>
+                <a href="#" class="forgot-password">Forgot password?</a>
             </div>
         </form>
         <form class="email-signup">
@@ -189,13 +189,13 @@
                 <input type="email" placeholder="Email"/>
             </div>
             <div class="u-form-group">
-                <input type="password" placeholder="Mật khẩu"/>
+                <input type="password" placeholder="Password"/>
             </div>
             <div class="u-form-group">
-                <input type="password" placeholder="Xác nhận mật khẩu"/>
+                <input type="password" placeholder="Retype password"/>
             </div>
             <div class="u-form-group">
-                <button>Đăng ký</button>
+                <button>Register</button>
             </div>
         </form>
     </div>
