@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -222,9 +223,11 @@
 
 <script>
     function loginFacebook() {
-
-
-
+        let clientId = "<%=request.getAttribute("clientIdFb")%>"
+        let redirectUri = "<%=request.getAttribute("redirectUrlFb")%>"
+        let linkAuthentication = 'https://www.facebook.com/dialog/oauth?client_id='
+            + clientId + '&redirect_uri=' + redirectUri + '&scope=public_profile,email'
+        window.location = linkAuthentication
     }
 </script>
 </html>
