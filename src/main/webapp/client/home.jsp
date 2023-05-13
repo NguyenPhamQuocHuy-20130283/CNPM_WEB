@@ -1,3 +1,4 @@
+<%@ page import="tran_minh_tuyen.model.UserCustomer" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- Global variables declaration --%>
@@ -16,7 +17,9 @@
 
 </head>
 <body>
-
+<%
+    UserCustomer user = (UserCustomer) request.getSession().getAttribute("auth_customer");
+%>
 <div class="super_container">
 
     <header class="header">
@@ -34,7 +37,7 @@
                             <div class="top_bar_icon"><img
                                     src="https://preview.colorlib.com/theme/onetech/images/mail.png.webp" alt=""></div>
                             <a href="/cdn-cgi/l/email-protection#412720323532202d243201262c20282d6f222e2c"><span
-                                    class="__cf_email__" data-cfemail="eb8d8a989f988a878e98ab8c868a8287c5888486">[email&#160;protected]</span></a>
+                                    class="__cf_email__" data-cfemail="eb8d8a989f988a878e98ab8c868a8287c5888486"><%=user.getName()%></span></a>
                         </div>
                         <div class="top_bar_content ml-auto">
                             <div class="top_bar_menu">
