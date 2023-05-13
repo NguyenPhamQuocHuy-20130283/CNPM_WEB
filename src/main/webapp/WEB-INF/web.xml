@@ -5,8 +5,9 @@
 <web-app>
 
   <display-name>Archetype Created Web Application</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-  </welcome-file-list>
+
+  <session-config>
+    <tracking-mode>COOKIE</tracking-mode>
+  </session-config>
 
 </web-app>
