@@ -20,57 +20,87 @@ public class FacebookLoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        /* Tham số này chứa mã lỗi nếu việc đăng nhập bị hủy bởi người dùng.*/
+        // alter_flow_2 : 4. gửi đoạn mã error thông báo user đã "Hủy đăng nhập bằng Fb"
         String error = request.getParameter("error");
 
-        /* Tham số này chứa mã xác thực dùng để lấy thông tin người dùng Facebook nếu việc đăng nhập thành công.*/
+        // alter_flow_2 : 5. chuyển về trang đăng nhập
+        if (error != null && error.equals("access_denied")) {
+            response.sendRedirect(request.getContextPath() + "/LoginServlet");
+        }
+
+        // basic_flow && alter_flow_1 : 4.gửi một đoạn code chứa mã xác thực
         String code = request.getParameter("code");
 
-        // khi người dùng hủy đăng nhập bằng Facebook
-        if (error != null && error.equals("access_denied")) {
-            response.sendRedirect(request.getContextPath() + "/shop/login");
-        }
-        // khi người dùng đồng ý đăng nhập bằng tài khoản Facebook trên trang xác thực tài khoản của Fb
         if (code != null) {
+
+            // basic_flow && alter_flow_1 : 5.gọi hàm getToken() của class FacebookUtils
+            // => trả về giá trị là một accessToken
             String accessToken = FacebookUtils.getToken(code);
+
+            // basic_flow && alter_flow_1 : 6.gọi hàm getUserInfor() của class FacebookUtils
+            // => trả về giá trị là một object userFacebook
             User userFacebook = FacebookUtils.getUserInfor(accessToken);
 
             String webBrowser = request.getHeader("User-Agent");
 
+            // basic_flow && alter_flow_1 : 7.khởi tạo object userCustomer
             UserCustomer userCustomer = new UserCustomer();
             userCustomer.setId_fb(userFacebook.getId());
             userCustomer.setName(userFacebook.getName());
             userCustomer.setSex(userFacebook.getGender());
             userCustomer.setEmail(userFacebook.getEmail());
 
-            // kiểm tra id_user_fb của người dùng có tồn tại trong hệ thống hay chưa ?
-            int id_user = FacebookGoogleService.checkExistAccReturnId(JDBiConnector.me(), userFacebook.getId(), TypeAcc.ACC_FACEBOOK);
+            int id_user = FacebookGoogleService.checkExistAccReturnId(JDBiConnector.me(), userFacebook.getId(),
+                    TypeAcc.ACC_FACEBOOK);
+
+            // basic_flow : 8. thông tin tài khoản Fb đó đã tồn tại trong hệ thống
             if (id_user != -1) {
-                // đã tồn tại trong hệ thống
+
                 userCustomer.setId(id_user + "");
-                Log logSignIn = new Log(userCustomer.getId(), "", "đăng nhập hệ thống bằng tài khoản Fb", "", webBrowser, "");
-                logSignIn.insert(JDBiConnector.me()); // ghi lịch sử đăng nhập vào bảng Log
+
+                // basic_flow : 9.khởi tạo object logSignIn
+                Log logSignIn = new Log(userCustomer.getId(), "", "đăng nhập hệ thống bằng tài khoản Fb", "",
+                        webBrowser, "");
+
+                // basic_flow : 10.ghi lại thông tin về lịch sử đăng nhập vào Db
+                logSignIn.insert(JDBiConnector.me());
 
                 request.getSession().setAttribute("auth_customer", userCustomer);
+
+                // basic_flow : 11. chuyển đến Trang chủ với tư cách là user đã đăng nhập bằng
+                // tài khoản Fb
                 response.sendRedirect(request.getContextPath() + "/HomeServlet");
 
-            } else if (id_user == -1) {
-                // chưa tồn tại trong hệ thống
+            }
 
+            // alter_flow_1 : 8. thông tin về tài khoản Fb chưa tồn tại trong hệ thống
+            else if (id_user == -1) {
+
+                // alter_flow_1 : 9.khởi tạo object logCreateAcc
                 Log logCreateAcc = new Log("", "", "", "", webBrowser, "");
-                int new_id_user = FacebookGoogleService.createAccProReturnId(JDBiConnector.me(), userCustomer, TypeAcc.ACC_FACEBOOK, logCreateAcc);
+
+                // alter_flow_1 : 10.gọi hàm tạo tài khoản và trả về giá trị id mới
+                int new_id_user = FacebookGoogleService.createAccProReturnId(JDBiConnector.me(), userCustomer,
+                        TypeAcc.ACC_FACEBOOK, logCreateAcc);
 
                 if (new_id_user != -1) {
-                    // tạo tài khoản thành công đồng thời đăng nhập vào hệ thống
+
                     userCustomer.setId(new_id_user + "");
-                    Log logSignIn = new Log(userCustomer.getId(), "", "đăng nhập hệ thống bằng tài khoản Fb", "", webBrowser, "");
+
+                    // alter_flow_1 : 11.khởi tạo object logSignIn
+                    Log logSignIn = new Log(userCustomer.getId(), "", "đăng nhập hệ thống bằng tài khoản Fb", "",
+                            webBrowser, "");
+
+                    // alter_flow_1 : 12. ghi lại thông tin lịch sử đăng nhập vào db
                     logSignIn.insert(JDBiConnector.me());
 
                     request.getSession().setAttribute("auth_customer", userCustomer);
+
+                    // alter_flow_1 : 13. chuyển đến Trang chủ với tư cách là user đã đăng nhập bằng
+                    // tài khoản Fb
                     response.sendRedirect(request.getContextPath() + "/HomeServlet");
 
                 } else {
-                    // tạo tài khoản không thành công <=> không thể đăng nhập vào hệ thống
 
                     response.sendRedirect(request.getContextPath() + "/LoginServlet");
 
