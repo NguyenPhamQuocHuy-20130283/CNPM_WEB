@@ -60,6 +60,29 @@
       <artifactId>jdbi3-core</artifactId>
       <version>3.37.1</version>
     </dependency>
+    <!-- RestFB là một Java API cho phép tương tác với Facebook Graph API -->
+    <dependency>
+      <groupId>com.restfb</groupId>
+      <artifactId>restfb</artifactId>
+      <version>1.19.0</version>
+    </dependency>
+    <!--Thư viện dùng để thực hiện các yêu cầu HTTP và HTTPS trong các ứng dụng Java-->
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.14</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>fluent-hc</artifactId>
+      <version>4.5.12</version>
+    </dependency>
+    <!--Đây là thư viện để chuyển đổi các đối tượng Java sang chuỗi JSON và ngược lại-->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.10.1</version>
+    </dependency>
     <dependency>
       <groupId>org.jdbi</groupId>
       <artifactId>jdbi3-sqlobject</artifactId>
@@ -73,8 +96,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>7</source>
-          <target>7</target>
+          <source>11</source>
+          <target>11</target>
         </configuration>
       </plugin>
     </plugins>

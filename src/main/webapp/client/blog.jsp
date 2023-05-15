@@ -15,14 +15,14 @@
     rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
 </head>
 
 <body>
@@ -45,7 +45,11 @@
             </a></li>
         </ul>
         <div class="offcanvas__logo">
+<<<<<<<< HEAD:src/main/webapp/client/html/blog.html
+            <a href="index.html"><img src="../img/logo.png" alt=""></a>
+========
             <a href="index.jsp"><img src="img/logo.png" alt=""></a>
+>>>>>>>> c85b46381adff74612fc180578e46fe30967bd9c:src/main/webapp/client/blog.jsp
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
@@ -61,12 +65,32 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-2">
                     <div class="header__logo">
+<<<<<<<< HEAD:src/main/webapp/client/html/blog.html
+                        <a href="index.html"><img src="../img/logo.png" alt=""></a>
+========
                         <a href="index.jsp"><img src="img/logo.png" alt=""></a>
+>>>>>>>> c85b46381adff74612fc180578e46fe30967bd9c:src/main/webapp/client/blog.jsp
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-7">
                     <nav class="header__menu">
                         <ul>
+<<<<<<<< HEAD:src/main/webapp/client/html/blog.html
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#">Women’s</a></li>
+                            <li><a href="#">Men’s</a></li>
+                            <li class="active"><a href="shop.html">Shop</a></li>
+                            <li><a href="#">Pages</a>
+                                <ul class="dropdown">
+                                    <li><a href="product-details.html">Product Details</a></li>
+                                    <li><a href="shop-cart.html">Shop Cart</a></li>
+                                    <li><a href="checkout.html">Checkout</a></li>
+                                    <li><a href="blog-details.html">Blog Details</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+========
                             <li><a href="index.jsp">Home</a></li>
                             <li><a href="#">Women’s</a></li>
                             <li><a href="#">Men’s</a></li>
@@ -81,6 +105,7 @@
                             </li>
                             <li><a href="./blog.html">Blog</a></li>
                             <li><a href="contact.jsp">Contact</a></li>
+>>>>>>>> c85b46381adff74612fc180578e46fe30967bd9c:src/main/webapp/client/blog.jsp
                         </ul>
                     </nav>
                 </div>
@@ -115,7 +140,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
+<<<<<<<< HEAD:src/main/webapp/client/html/blog.html
+                        <a href="index.html"><i class="fa fa-home"></i> Home</a>
+========
                         <a href="index.jsp"><i class="fa fa-home"></i> Home</a>
+>>>>>>>> c85b46381adff74612fc180578e46fe30967bd9c:src/main/webapp/client/blog.jsp
                         <span>Blog</span>
                     </div>
                 </div>
@@ -307,16 +336,20 @@
                 <div class="col-lg-4 col-md-6 col-sm-7">
                     <div class="footer__about">
                         <div class="footer__logo">
+<<<<<<<< HEAD:src/main/webapp/client/html/blog.html
+                            <a href="index.html"><img src="../img/logo.png" alt=""></a>
+========
                             <a href="index.jsp"><img src="img/logo.png" alt=""></a>
+>>>>>>>> c85b46381adff74612fc180578e46fe30967bd9c:src/main/webapp/client/blog.jsp
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                         cilisis.</p>
                         <div class="footer__payment">
-                            <a href="#"><img src="img/payment/payment-1.png" alt=""></a>
-                            <a href="#"><img src="img/payment/payment-2.png" alt=""></a>
-                            <a href="#"><img src="img/payment/payment-3.png" alt=""></a>
-                            <a href="#"><img src="img/payment/payment-4.png" alt=""></a>
-                            <a href="#"><img src="img/payment/payment-5.png" alt=""></a>
+                            <a href="#"><img src="../img/payment/payment-1.png" alt=""></a>
+                            <a href="#"><img src="../img/payment/payment-2.png" alt=""></a>
+                            <a href="#"><img src="../img/payment/payment-3.png" alt=""></a>
+                            <a href="#"><img src="../img/payment/payment-4.png" alt=""></a>
+                            <a href="#"><img src="../img/payment/payment-5.png" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -384,16 +417,16 @@
     <!-- Search End -->
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/mixitup.min.js"></script>
+    <script src="../js/jquery.countdown.min.js"></script>
+    <script src="../js/jquery.slicknav.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/jquery.nicescroll.min.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>
