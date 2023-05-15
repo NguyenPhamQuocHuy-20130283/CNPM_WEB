@@ -287,6 +287,8 @@
           </div>
         </div>
       </div>
+<%------------------------------FEATURE TÌM KIẾM SẢN PHẨM
+                                B4: Hiển thị danh sách sản phẩm hoặc lỗi------------------------------%>
       <% String error = request.getAttribute("error").toString();%>
       <h3><%=error%></h3>
       <div class="col-lg-9 col-md-9">
@@ -300,6 +302,8 @@
                 <ul class="product__hover">
                   <li><a href="<%=p.getImage()%>" class="image-popup"><span class="arrow_expand"></span></a></li>
                   <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+<%------------------------------FEATURE HIỂN THỊ CHI TIẾT SẢN PHẨM
+                                B1: Click chọn sản phẩm xem chi tiết------------------------------%>
                   <li><a href="./ProductController?productId=<%=p.getId()%>"><span class="icon_bag_alt"></span></a></li>
                 </ul>
               </div>
@@ -341,6 +345,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="./assets/js/quy.js"></script>
 <script>
+  // Chức năng load more
   function loadMore() {
     var amount = document.getElementsByClassName('pro').length;
     $.ajax({

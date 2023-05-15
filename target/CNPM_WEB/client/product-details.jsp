@@ -54,6 +54,9 @@
 </div>
 <!-- Offcanvas Menu End -->
 
+<%------------------------------FEATURE HIỂN THỊ CHI TIẾT SẢN PHẨM
+                                B3: Hiển thị thiing tin chi tiết sản phẩm------------------------------%>
+
 <jsp:include page="./teamplates/header.jsp"/>
 <% Product p = (Product) request.getAttribute("product"); %>
 <!-- Breadcrumb Begin -->
@@ -111,6 +114,10 @@
                                 <input type="text" value="1">
                             </div>
                         </div>
+
+<%------------------------------ FEATURE HIỂN THỊ CHI TIẾT SẢN PHẨM
+                                B4: Tùy chọn để thêm sản phẩm vào giỏ hàng------------------------------%>
+
                         <a href="#" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
                         <ul>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
