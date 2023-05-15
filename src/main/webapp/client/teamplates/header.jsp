@@ -49,23 +49,22 @@
             </div>
         </div>
     </div>
-
     <div class="header_main">
         <div class="container">
             <div class="row">
-
                 <div class="col-lg-2 col-sm-3 col-3 order-1">
                     <div class="logo_container">
                         <div class="logo"><a href="#">OneTech</a></div>
                     </div>
                 </div>
-
                 <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
                     <div class="header_search">
                         <div class="header_search_content">
                             <div class="header_search_form_container">
-                                <form action="#" class="header_search_form clearfix">
-                                    <input type="search" required="required" class="header_search_input"
+<%------------------------------FEATURE TÌM KIẾM SẢN PHẨM
+                                B1: Nhập từ khóa tìm kiếm------------------------------%>
+                                <form action="/SeachController" class="header_search_form clearfix">
+                                    <input name="keySeach" type="search" required="required" class="header_search_input"
                                            placeholder="Search for products...">
                                     <div class="custom_dropdown">
                                         <div class="custom_dropdown_list">
@@ -120,7 +119,6 @@
             </div>
         </div>
     </div>
-
     <nav class="main_nav">
         <div class="container">
             <div class="row">
@@ -242,7 +240,6 @@
             </div>
         </div>
     </nav>
-
     <div class="page_menu">
         <div class="container">
             <div class="row">
@@ -339,3 +336,26 @@
         </div>
     </div>
 </header>
+<script>
+    <%------------------------------FEATURE TÌM KIẾM SẢN PHẨM
+                                    B2: kiểm tra từ khóa trống hay không------------------------------%>
+    var form = document.querySelector("form");
+    function chkEmpty(input) {
+        input.value = input.value.trim();
+        if(!input.value) {
+            return true;
+        }
+        return false;
+    }
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var input = document.querySelector("#search-input");
+        console.log(input)
+        if(chkEmpty(input)) {
+            document.querySelector("#error").innerHTML="No empty!!";
+        } else {
+            document.querySelector("#error").innerHTML="";
+            form.submit();
+        }
+    })
+</script>
