@@ -54,23 +54,22 @@
             <div class="row">
                 <div class="col-lg-2 col-sm-3 col-3 order-1">
                     <div class="logo_container">
-                        <div class="logo"><a href="#">OneTech</a></div>
+                        <div class="logo"><a href="/home">OneTech</a></div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
                     <div class="header_search">
                         <div class="header_search_content">
                             <div class="header_search_form_container">
-
 <%------------------------------B1: Nhập từ khóa tìm kiếm------------------------------%>
-                                <form action="/SeachController" class="header_search_form clearfix">
+                                <form class="header_search_form clearfix" action="seach">
                                     <input name="keySeach" type="search" required="required" class="header_search_input"
                                            placeholder="Search for products...">
 <%------------------------------END B1: Nhập từ khóa tìm kiếm------------------------------%>
                                     <div class="custom_dropdown">
                                         <div class="custom_dropdown_list">
                                             <span class="custom_dropdown_placeholder clc">All Categories</span>
-                                            <i class="fas fa-chevron-down"></i>
+                                            v
                                             <ul class="custom_list clc">
                                                 <li><a class="clc" href="#">All Categories</a></li>
                                                 <li><a class="clc" href="#">Computers</a></li>
@@ -216,26 +215,26 @@
         </div>
     </div>
 </header>
-<script>
-<%------------------------------B2: kiểm tra từ khóa trống hay không------------------------------%>
-    var form = document.querySelector("form");
-    function chkEmpty(input) {
-        input.value = input.value.trim();
-        if(!input.value) {
-            return true;
-        }
-        return false;
-    }
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var input = document.querySelector("#search-input");
-        console.log(input)
-        if(chkEmpty(input)) {
-            document.querySelector("#error").innerHTML="No empty!!";
-        } else {
-            document.querySelector("#error").innerHTML="";
-            form.submit();
-        }
-    })
-<%------------------------------END B2: kiểm tra từ khóa trống hay không------------------------------%>
-</script>
+<%--<script>--%>
+<%--&lt;%&ndash;----------------------------B2: kiểm tra từ khóa trống hay không----------------------------&ndash;%&gt;--%>
+<%--    var form = document.querySelector("form");--%>
+<%--    function chkEmpty(input) {--%>
+<%--        input.value = input.value.trim();--%>
+<%--        if(!input.value) {--%>
+<%--            return true;--%>
+<%--        }--%>
+<%--        return false;--%>
+<%--    }--%>
+<%--    form.addEventListener("submit", function (e) {--%>
+<%--        e.preventDefault();--%>
+<%--        var input = document.querySelector("#search-input");--%>
+<%--        console.log(input)--%>
+<%--        if(chkEmpty(input)) {--%>
+<%--            document.querySelector("#error").innerHTML="No empty!!";--%>
+<%--        } else {--%>
+<%--            document.querySelector("#error").innerHTML="";--%>
+<%--            form.submit();--%>
+<%--        }--%>
+<%--    })--%>
+<%--&lt;%&ndash;----------------------------END B2: kiểm tra từ khóa trống hay không----------------------------&ndash;%&gt;--%>
+<%--</script>--%>

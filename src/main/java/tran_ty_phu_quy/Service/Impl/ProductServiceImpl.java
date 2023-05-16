@@ -4,6 +4,7 @@ import tran_ty_phu_quy.Model.Product;
 import tran_ty_phu_quy.Service.IProductService;
 import tran_ty_phu_quy.dao.Impl.ProductDaoImpl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class ProductServiceImpl implements IProductService {
@@ -24,5 +25,10 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public Product getProductById(int parseInt) {
         return ProductDaoImpl.getInstall().getProductById(parseInt);
+    }
+
+    @Override
+    public int getTotalProduct(String name) throws SQLException {
+        return ProductDaoImpl.getInstall().getTotalProduct(name);
     }
 }

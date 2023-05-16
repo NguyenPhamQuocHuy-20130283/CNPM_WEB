@@ -88,7 +88,6 @@
             </div>
         </div>
     </div>
-
     <div class="deals_featured">
         <div class="container">
             <div class="row">

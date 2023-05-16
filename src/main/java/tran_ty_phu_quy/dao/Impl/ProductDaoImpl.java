@@ -18,16 +18,12 @@ public class ProductDaoImpl implements IproductDao {
         }
         return install;
     }
-
-    public static void main(String[] args) {
-        System.out.println(ProductDaoImpl.getInstall().getProductById(3));
-    }
     @Override
     public List<Product> getLstProductByName(String name, int limit) {
         List<Product> lst = new ArrayList<>();
         try {
             PreparedStatement statement = DBConnect.getInstall().get("select p.id, p.model,p.image,p.price, p.description " +
-                            " from phone p where p.model like ? limit ?,15");
+                            " from phone p where p.model like ? limit ?,12");
             statement.setString(1,"%"+name+"%");
             statement.setInt(2,limit);
             ResultSet rs = statement.executeQuery();
@@ -72,5 +68,21 @@ public class ProductDaoImpl implements IproductDao {
             throw new RuntimeException(e);
         }
         return p;
+    }
+
+    @Override
+    public int getTotalProduct(String name) throws SQLException {
+        int result =0;
+        PreparedStatement statement = DBConnect.getInstall().get("select count(*) from phone where model like ?");
+        statement.setString(1,"%"+name+"%");
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()){
+            result=rs.getInt(1);
+        }
+        return result;
+    }
+
+    public static void main(String[] args) throws SQLException {
+        System.out.println(ProductDaoImpl.getInstall().getTotalProduct("iphone"));
     }
 }

@@ -1,4 +1,6 @@
 <%@ page import="tran_minh_tuyen.model.UserCustomer" %>
+<%@ page import="java.util.List" %>
+<%@ page import="tran_ty_phu_quy.Model.Product" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- Global variables declaration --%>
@@ -15,7 +17,11 @@
     <!-- ===== STYLESHEET ===== -->
     <jsp:include page="../common/client-css.jsp"/>
     <style>
-        .main {background-color: #f5f5f5}
+        .main {
+            background-color: #f5f5f5;
+            padding: 20px 0px;
+        }
+
         .product-list {
             display: flex;
             flex-wrap: wrap;
@@ -23,14 +29,19 @@
         }
 
         .product-item {
-            width: 30%;
+            width: 20%;
             margin-bottom: 30px;
             text-align: center;
+            background-color: white;
+            padding: 5px;
+            box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.75);
         }
 
         .product-item img {
             width: 100%;
-            max-height: 200px;
+            height: 200px;
             object-fit: contain;
         }
 
@@ -44,112 +55,74 @@
             font-size: 16px;
             font-weight: bold;
         }
-
+        .product {
+            display: inline-block;
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        .product img {
+            width: 150px;
+            height: 150px;
+        }
+        .breadcrumb-option {margin-bottom: 10px}
+        .kq {margin-bottom: 20px; text-transform: uppercase} .button-wrapper{display: flex;justify-content: center}
+        #btnLoadMore{background-color: #8d8d8d; cursor: pointer}
     </style>
 </head>
 <body>
-
+<% String key = request.getAttribute("key").toString();
+    List<Product> lst = (List<Product>) request.getAttribute("lstProduct");
+    int sl = (int) request.getAttribute("size");%>
 <div class="super_container">
     <jsp:include page="teamplates/header.jsp"/>
-    <div class="main">
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
         <div class="container">
-            <div class="product-list">
-                <div class="product-item">
-                    <img src="product1.jpg" alt="Product 1">
-                    <h2>Product 1</h2>
-                    <p>$10.99</p>
-                </div>
-                <div class="product-item">
-                    <img src="product2.jpg" alt="Product 2">
-                    <h2>Product 2</h2>
-                    <p>$19.99</p>
-                </div>
-                <div class="product-item">
-                    <img src="product3.jpg" alt="Product 3">
-                    <h2>Product 3</h2>
-                    <p>$24.99</p>
-                </div>
-                <div class="product-item">
-                    <img src="product3.jpg" alt="Product 3">
-                    <h2>Product 3</h2>
-                    <p>$24.99</p>
-                </div>
-                <div class="product-item">
-                    <img src="product3.jpg" alt="Product 3">
-                    <h2>Product 3</h2>
-                    <p>$24.99</p>
-                </div>
-                <div class="product-item">
-                    <img src="product3.jpg" alt="Product 3">
-                    <h2>Product 3</h2>
-                    <p>$24.99</p>
-                </div>
-                <div class="product-item">
-                    <img src="product3.jpg" alt="Product 3">
-                    <h2>Product 3</h2>
-                    <p>$24.99</p>
-                </div>
-                <div class="product-item">
-                    <img src="product3.jpg" alt="Product 3">
-                    <h2>Product 3</h2>
-                    <p>$24.99</p>
-                </div>
-                <div class="product-item">
-                    <img src="product3.jpg" alt="Product 3">
-                    <h2>Product 3</h2>
-                    <p>$24.99</p>
-                </div>
-                <div class="product-item">
-                    <img src="product3.jpg" alt="Product 3">
-                    <h2>Product 3</h2>
-                    <p>$24.99</p>
-                </div>
-                <div class="product-item">
-                    <img src="product3.jpg" alt="Product 3">
-                    <h2>Product 3</h2>
-                    <p>$24.99</p>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="/home">Home</a>
+                        <span>Tìm kiếm: <%=key%></span>
+                    </div>
                 </div>
             </div>
-
         </div>
-
+    </div>
+    <!-- Breadcrumb End -->
+    <div class="main">
+        <div class="container">
+            <h2 class="kq">kết quả: tìm thấy (<%=sl%>) sản phẩm</h2>
+            <div id="row" class="product-list">
+                <% for (Product p : lst) {%>
+                    <div class="product-item pro">
+                        <img src="<%=p.getImage()%>" alt="Product 1">
+                        <h2><%=p.getModel()%></h2>
+                        <p><%=p.getPrice()%></p>
+                    </div>
+                <%}%>
+            </div>
+            <div class="button-wrapper">
+                <button class="btn btn-light" onclick="loadMore()" id="btnLoadMore" >Xem thêm <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i></button>
+            </div>
+        </div>
     </div>
     <jsp:include page="teamplates/footer.jsp"/>
 </div>
-
-<jsp:include page="../common/client-js.jsp"/>
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
+    function loadMore() {
+        var amount = document.getElementsByClassName('pro').length;
+        $.ajax({
+            url: "/loadmore",
+            type:"get",
+            data: {exits: amount,name: "<%=key%>"},
+            success: function (data) {
+                var row = document.getElementById('row');
+                row.innerHTML += data;
+            },
+            error:function (xhr) {}
+        });
     }
-
-    gtag('js', new Date());
-
-    gtag('config', 'UA-23581568-13');
 </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816"
-        integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw=="
-        data-cf-beacon='{"rayId":"7c5f49891bada123","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2023.4.0","si":100}'
-        crossorigin="anonymous"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'UA-23581568-13');
-</script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816"
-        integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw=="
-        data-cf-beacon='{"rayId":"7c5f49891bada123","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2023.4.0","si":100}'
-        crossorigin="anonymous"></script>
-
 </body>

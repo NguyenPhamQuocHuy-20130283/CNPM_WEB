@@ -1,29 +1,34 @@
 package tran_ty_phu_quy.Controller;
+
 import tran_ty_phu_quy.Model.Product;
 import tran_ty_phu_quy.Service.Impl.ProductServiceImpl;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "SeachController", value = "/SeachController")
+@WebServlet(name = "SeachController", value = "/seach")
 public class SeachServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       /*B3: Tìm kiếm sản phẩm*/
-        String name = request.getParameter("keySeach");
-        List<Product> lst = ProductServiceImpl.getInstall().getLstProductByName(name,0);
-        if(lst.size()<=0) {
-            request.setAttribute("error", "Tìm thấy 0 sản phẩm cho từ khóa:"+name);
-        } else {
-            request.setAttribute("error", "");
+        try {
+            /*B3: Tìm kiếm sản phẩm*/
+            String key = request.getParameter("keySeach");
+            List<Product> lst = ProductServiceImpl.getInstall().getLstProductByName(key, 0);
+            int size = ProductServiceImpl.getInstall().getTotalProduct(key);
+
+            request.setAttribute("key", key);
+            request.setAttribute("lstProduct", lst);
+            request.setAttribute("size", size);
+            request.getRequestDispatcher("/client/seach.jsp").forward(request, response);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        request.setAttribute("name",name);
-        request.setAttribute("lstProduct",lst);
-        request.setAttribute("size",lst.size());
-        request.getRequestDispatcher("./client/seach.jsp").forward(request,response);
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }

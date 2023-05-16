@@ -20,29 +20,13 @@ public class loadmore extends HttpServlet {
                 getInstall().getLstProductByName(name, Integer.parseInt(amount));
         PrintWriter out = response.getWriter();
         for (Product p:productList) {
-            out.println(" <div class=\"col-lg-4 col-md-6\">\n" +
-                    "            <div class=\"product__item\">\n" +
-                    "              <div class=\"product__item__pic set-bg\" data-setbg=\""+p.getImage()+"\">\n" +
-                    "                <div class=\"label new\">New</div>\n" +
-                    "                <ul class=\"product__hover\">\n" +
-                    "                  <li><a href=\""+p.getImage()+"\" class=\"image-popup\"><span class=\"arrow_expand\"></span></a></li>\n" +
-                    "                  <li><a href=\"#\"><span class=\"icon_heart_alt\"></span></a></li>\n" +
-                    "                  <li><a href=\"./ProductController?productId="+p.getId()+"><span class=\"icon_bag_alt\"></span></a></li>\n" +
-                    "                </ul>\n" +
-                    "              </div>\n" +
-                    "              <div class=\"product__item__text\">\n" +
-                    "                <h6><a href=\"#\">"+p.getModel()+"</a></h6>\n" +
-                    "                <div class=\"rating\">\n" +
-                    "                  <i class=\"fa fa-star\"></i>\n" +
-                    "                  <i class=\"fa fa-star\"></i>\n" +
-                    "                  <i class=\"fa fa-star\"></i>\n" +
-                    "                  <i class=\"fa fa-star\"></i>\n" +
-                    "                  <i class=\"fa fa-star\"></i>\n" +
-                    "                </div>\n" +
-                    "                <div class=\"product__price\">"+p.getPrice()+"</div>\n" +
-                    "              </div>\n" +
-                    "            </div>\n" +
-                    "          </div>");
+            out.println(
+                    "                    <div class=\"product-item pro\">" +
+                    "                        <img src=\""+p.getImage()+"\" alt=\"Product 1\">" +
+                    "                        <h2>"+p.getModel()+"</h2>" +
+                    "                        <p>"+p.getPrice()+"</p>" +
+                    "                    </div>"
+            );
         }
     }
 
