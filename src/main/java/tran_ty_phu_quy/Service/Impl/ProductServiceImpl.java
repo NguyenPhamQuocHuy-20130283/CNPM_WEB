@@ -2,7 +2,7 @@ package tran_ty_phu_quy.Service.Impl;
 
 import tran_ty_phu_quy.Model.Product;
 import tran_ty_phu_quy.Service.IProductService;
-import webCNPM.dao.Impl.ProductDaoImpl;
+import tran_ty_phu_quy.dao.Impl.ProductDaoImpl;
 
 import java.util.List;
 

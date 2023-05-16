@@ -1,4 +1,5 @@
 package tran_ty_phu_quy.dao.Impl;
+import tran_ty_phu_quy.Model.Product;
 import tran_ty_phu_quy.dao.IproductDao;
 import webCNPM.db.DBConnect;
 

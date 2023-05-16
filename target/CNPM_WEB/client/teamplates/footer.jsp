@@ -1,71 +1,69 @@
-<!-- Footer Section Begin -->
 <footer class="footer">
   <div class="container">
     <div class="row">
-      <div class="col-lg-4 col-md-6 col-sm-7">
-        <div class="footer__about">
-          <div class="footer__logo">
-            <a href="./index.html"><img src="./client/img/logo.png" alt=""></a>
+      <div class="col-lg-3 footer_col">
+        <div class="footer_column footer_contact">
+          <div class="logo_container">
+            <div class="logo"><a href="#">OneTech</a></div>
           </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            cilisis.</p>
-          <div class="footer__payment">
-            <a href="#"><img src="./client/img/payment/payment-1.png" alt=""></a>
-            <a href="#"><img src="./client/img/payment/payment-2.png" alt=""></a>
-            <a href="#"><img src="./client/img/payment/payment-3.png" alt=""></a>
-            <a href="#"><img src="./client/img/payment/payment-4.png" alt=""></a>
-            <a href="#"><img src="./client/img/payment/payment-5.png" alt=""></a>
+          <div class="footer_title">Got Question? Call Us 24/7</div>
+          <div class="footer_phone">+38 068 005 3570</div>
+          <div class="footer_contact_text">
+            <p>17 Princess Road, London</p>
+            <p>Grester London NW18JR, UK</p>
+          </div>
+          <div class="footer_social">
+            <ul>
+              <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+              <li><a href="#"><i class="fab fa-google"></i></a></li>
+              <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+            </ul>
           </div>
         </div>
       </div>
-      <div class="col-lg-2 col-md-3 col-sm-5">
-        <div class="footer__widget">
-          <h6>Quick links</h6>
-          <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Blogs</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">FAQ</a></li>
+      <div class="col-lg-2 offset-lg-2">
+        <div class="footer_column">
+          <div class="footer_title">Find it Fast</div>
+          <ul class="footer_list">
+            <li><a href="#">Computers & Laptops</a></li>
+            <li><a href="#">Cameras & Photos</a></li>
+            <li><a href="#">Hardware</a></li>
+            <li><a href="#">Smartphones & Tablets</a></li>
+            <li><a href="#">TV & Audio</a></li>
+          </ul>
+          <div class="footer_subtitle">Gadgets</div>
+          <ul class="footer_list">
+            <li><a href="#">Car Electronics</a></li>
           </ul>
         </div>
       </div>
-      <div class="col-lg-2 col-md-3 col-sm-4">
-        <div class="footer__widget">
-          <h6>Account</h6>
-          <ul>
+      <div class="col-lg-2">
+        <div class="footer_column">
+          <ul class="footer_list footer_list_2">
+            <li><a href="#">Video Games & Consoles</a></li>
+            <li><a href="#">Accessories</a></li>
+            <li><a href="#">Cameras & Photos</a></li>
+            <li><a href="#">Hardware</a></li>
+            <li><a href="#">Computers & Laptops</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="footer_column">
+          <div class="footer_title">Customer Care</div>
+          <ul class="footer_list">
             <li><a href="#">My Account</a></li>
-            <li><a href="#">Orders Tracking</a></li>
-            <li><a href="#">Checkout</a></li>
-            <li><a href="#">Wishlist</a></li>
+            <li><a href="#">Order Tracking</a></li>
+            <li><a href="#">Wish List</a></li>
+            <li><a href="#">Customer Services</a></li>
+            <li><a href="#">Returns / Exchange</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Product Support</a></li>
           </ul>
         </div>
-      </div>
-      <div class="col-lg-4 col-md-8 col-sm-8">
-        <div class="footer__newslatter">
-          <h6>NEWSLETTER</h6>
-          <form action="#">
-            <input type="text" placeholder="Email">
-            <button type="submit" class="site-btn">Subscribe</button>
-          </form>
-          <div class="footer__social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-youtube-play"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
-            <a href="#"><i class="fa fa-pinterest"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        <div class="footer__copyright__text">
-          <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
-        </div>
-        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
       </div>
     </div>
   </div>
 </footer>
-<!-- Footer Section End -->

@@ -11,8 +11,7 @@ import java.util.List;
 public class SeachServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       /*FEATURE TÌM KIẾM SẢN PHẨM
-         B3: Tìm kiếm sản phẩm*/
+       /*B3: Tìm kiếm sản phẩm*/
         String name = request.getParameter("keySeach");
         List<Product> lst = ProductServiceImpl.getInstall().getLstProductByName(name,0);
         if(lst.size()<=0) {
