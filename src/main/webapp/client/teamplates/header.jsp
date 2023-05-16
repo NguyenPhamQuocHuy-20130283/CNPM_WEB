@@ -63,8 +63,8 @@
                             <div class="header_search_form_container">
 <%------------------------------B1: Nhập từ khóa tìm kiếm------------------------------%>
                                 <form class="header_search_form clearfix" action="seach">
-                                    <input name="keySeach" type="search" required="required" class="header_search_input"
-                                           placeholder="Search for products...">
+                                    <input name="keySeach" type="search" required="required" pattern="[a-zA-Z0-9]+"
+                                           class="header_search_input" placeholder="Search for products...">
 <%------------------------------END B1: Nhập từ khóa tìm kiếm------------------------------%>
                                     <div class="custom_dropdown">
                                         <div class="custom_dropdown_list">
