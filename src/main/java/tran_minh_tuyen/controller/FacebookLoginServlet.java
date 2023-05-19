@@ -17,6 +17,8 @@ import java.io.IOException;
 
 @WebServlet(name = "FacebookLoginServlet", value = "/FacebookLoginServlet")
 public class FacebookLoginServlet extends HttpServlet {
+
+    // 1.Usecase: đăng nhập bằng Facebook
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -38,7 +40,7 @@ public class FacebookLoginServlet extends HttpServlet {
             String accessToken = FacebookUtils.getToken(code);
 
             // basic_flow && alter_flow_1 : 6.gọi hàm getUserInfor() của class FacebookUtils
-            // => trả về giá trị là một object userFacebook
+            // => trả về giá trị là một object userFacebook dựa vào accessToken
             User userFacebook = FacebookUtils.getUserInfor(accessToken);
 
             String webBrowser = request.getHeader("User-Agent");
@@ -50,10 +52,11 @@ public class FacebookLoginServlet extends HttpServlet {
             userCustomer.setSex(userFacebook.getGender());
             userCustomer.setEmail(userFacebook.getEmail());
 
+            // basic_flow && alter_flow_1 : 8. gọi hàm checkExistAccReturnId() của class FacebookGoogleService
             int id_user = FacebookGoogleService.checkExistAccReturnId(JDBiConnector.me(), userFacebook.getId(),
                     TypeAcc.ACC_FACEBOOK);
 
-            // basic_flow : 8. thông tin tài khoản Fb đó đã tồn tại trong hệ thống
+            // Tài khoản Fb dùng để đăng nhập đã tồn tại trong hệ thống => basic_flow
             if (id_user != -1) {
 
                 userCustomer.setId(id_user + "");
@@ -67,13 +70,12 @@ public class FacebookLoginServlet extends HttpServlet {
 
                 request.getSession().setAttribute("auth_customer", userCustomer);
 
-                // basic_flow : 11. chuyển đến Trang chủ với tư cách là user đã đăng nhập bằng
-                // tài khoản Fb
+                // basic_flow : 11. chuyển đến Trang chủ với tư cách là user đã đăng nhập bằng tài khoản Fb
                 response.sendRedirect(request.getContextPath() + "/HomeServlet");
 
             }
 
-            // alter_flow_1 : 8. thông tin về tài khoản Fb chưa tồn tại trong hệ thống
+            // Tài khoản Fb dùng để đăng nhập chưa tồn tại trong hệ thống => alter_flow_1
             else if (id_user == -1) {
 
                 // alter_flow_1 : 9.khởi tạo object logCreateAcc
@@ -96,8 +98,7 @@ public class FacebookLoginServlet extends HttpServlet {
 
                     request.getSession().setAttribute("auth_customer", userCustomer);
 
-                    // alter_flow_1 : 13. chuyển đến Trang chủ với tư cách là user đã đăng nhập bằng
-                    // tài khoản Fb
+                    // alter_flow_1 : 13. chuyển đến Trang chủ với tư cách là user đã đăng nhập bằng tài khoản Fb
                     response.sendRedirect(request.getContextPath() + "/HomeServlet");
 
                 } else {
