@@ -15,8 +15,9 @@ public class SeachServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            /*B3: Tìm kiếm sản phẩm*/
+
             String key = request.getParameter("keySeach");
+            /*B1.2: getLstProductByName(key, 0)*/
             List<Product> lst = ProductServiceImpl.getInstall().getLstProductByName(key, 0);
             int size = ProductServiceImpl.getInstall().getTotalProduct(key);
 

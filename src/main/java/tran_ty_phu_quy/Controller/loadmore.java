@@ -15,7 +15,7 @@ public class loadmore extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         String amount = request.getParameter("exits");
-
+        /*B2.2: getLstProductByName(name, Integer.parseInt(amount)*/
         List<Product> productList = ProductServiceImpl.
                 getInstall().getLstProductByName(name, Integer.parseInt(amount));
         PrintWriter out = response.getWriter();

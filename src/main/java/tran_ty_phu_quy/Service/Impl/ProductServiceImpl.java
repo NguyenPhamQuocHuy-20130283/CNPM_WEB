@@ -19,6 +19,8 @@ public class ProductServiceImpl implements IProductService {
     }
     @Override
     public List<Product> getLstProductByName(String name, int limit) {
+//        B1.3: getLstProductByName(name,limit);
+//        B2.3: getLstProductByName(name,limit);
         return ProductDaoImpl.getInstall().getLstProductByName(name,limit);
     }
 
