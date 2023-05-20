@@ -64,8 +64,8 @@
                             <div class="top_bar_user">
                                 <div class="user_icon"><img
                                         src="https://preview.colorlib.com/theme/onetech/images/user.svg" alt=""></div>
-                                <div><a href="#">Register</a></div>
-                                <div><a href="#">Sign in</a></div>
+                                <%--                                <div><a href="#">Register</a></div>--%>
+                                <div><a href="<%=request.getContextPath()%>/SignOutServlet">Sign out</a></div>
                             </div>
                         </div>
                     </div>
